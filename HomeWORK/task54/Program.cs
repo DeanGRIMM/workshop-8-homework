@@ -29,15 +29,22 @@ void PrintArray(int[,] array)
 void SortArray(int[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
+    {
         for (int j = 0; j < array.GetLength(1); j++)
-            for (int k = 0; k < array.GetLength(0); k++)
+        {
+            for (int k = 0; k < array.GetLength(1)-1; k++)
+            {
                 if (array[i,k]>array[i,k+1])
                 {
                     int temp = array[i,k];
                     array[i,k] = array[i,k+1];
                     array[i,k+1] = temp;
                 }
+            }
+        }
+    }
 }
+
 Console.Write("Введите количество строк: ");
 int numRows = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите количество столбцов: ");
