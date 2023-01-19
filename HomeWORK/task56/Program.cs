@@ -23,21 +23,26 @@ void PrintArray(int[,] array)
         Console.WriteLine();
     }
 }
-void CountArray(int[,] array)
+void SumArray(int[,] array)
 {
-    int[] countarray = new int[10];
-
+    int SumMin1 = 0;
+    int SumMin2 = 0;
+    int index = 0;
     for (int i = 0; i < array.GetLength(0); i++)
-        for (int j = 0; j < array.GetLength(1); j++)
-            countarray[array[i,j]]++;
-
-
-    for (int l = 0; l < 10; l++) 
     {
-       if (countarray[l] != 0)
-       Console.WriteLine($" Число {l} встречается {countarray[l]}");
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            SumMin1+=array[i,j];
+        }
+        if (SumMin2>SumMin1 || i == 0)
+        {
+            SumMin2 = SumMin1;
+            index = i;
+        }
+        SumMin1 = 0;
     }
-            
+    Console.WriteLine($"строка с наименьшей суммой = {SumMin2} является строка под номером {index}");
+
 }
 
 
@@ -50,5 +55,5 @@ int[,] array = new int[numRows, numCols];
 
 FillArray(array);
 PrintArray(array);
-Console.WriteLine("Массив после замены строк:");
-CountArray(array);
+Console.WriteLine();
+SumArray(array);
